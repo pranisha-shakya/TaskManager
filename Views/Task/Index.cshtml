@@ -5,7 +5,7 @@
 @await Html.PartialAsync("_Tasks", Model)
 
 <div>
-    <a hx-get="/Task/Create" hx-target="#taskForm">Create New Task</a>
+    <button class="btn btn-success" hx-get="/Task/Create" hx-target="#taskForm">Create New Task</button>
 </div>
 
 <div id="taskForm" hx-boost="true"></div>
