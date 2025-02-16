@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Task_Manager.Data;
+using Task = Task_Manager.Models.Task;
 
 namespace Task_Manager.Controllers
 {
@@ -19,7 +20,8 @@ namespace Task_Manager.Controllers
 
         public IActionResult Create()
         {
-            return View();
+            var task = new Task();
+            return View(task);
         }
         public IActionResult Edit(int id)
         {

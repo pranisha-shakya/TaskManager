@@ -15,8 +15,8 @@
                 <td>@task.Description</td>
                 <td>@(task.IsCompleted ? "Yes" : "No")</td>
                 <td>
-                    <a asp-action="Edit" hx-get="/Tasks/Edit/@task.Id" hx-target="#taskForm">Edit</a>
-                    <a asp-action="Delete" hx-post="/Tasks/Delete/@task.Id" hx-confirm="Are you sure you want to delete this task?" hx-target="#taskCollection">Delete</a>
+                    <a hx-get="/Task/Edit/@task.Id" hx-target="#taskForm">Edit</a>
+                    <a hx-post="/Task/Delete/@task.Id" hx-confirm="Are you sure you want to delete this task?" hx-target="#taskCollection">Delete</a>
                 </td>
             </tr>
         }

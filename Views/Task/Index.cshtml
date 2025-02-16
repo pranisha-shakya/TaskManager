@@ -1,0 +1,11 @@
+﻿@model List<Task_Manager.Models.Task>
+
+<h2>Tasks</h2>
+
+@await Html.PartialAsync("_Tasks", Model)
+
+<div>
+    <a hx-get="/Task/Create" hx-target="#taskForm">Create New Task</a>
+</div>
+
+<div id="taskForm" hx-boost="true"></div>
