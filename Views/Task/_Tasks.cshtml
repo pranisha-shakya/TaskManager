@@ -1,24 +1,14 @@
-﻿<table id="taskCollection" class="table table-striped table-bordered">
-    <thead>
-        <tr>
-            <th>Task</th>
-            <th>Description</th>
-            <th>IsCompleted</th>
-            <th>Actions</th>
-        </tr>
-    </thead>
-    <tbody>
-        @foreach (var task in Model)
-        {
-            <tr>
-                <td>@task.Title</td>
-                <td>@task.Description</td>
-                <td>@(task.IsCompleted ? "Yes" : "No")</td>
-                <td>
-                    <button class="btn btn-secondary" type="button" hx-get="/Task/Edit/@task.Id" hx-target="#taskForm">Edit</button>
-                    <button class="btn btn-danger" type="button" hx-post="/Task/Delete/@task.Id" hx-confirm="Are you sure you want to delete this task?" hx-target="#taskCollection">Delete</button>
-                </td>
-            </tr>
-        }
-    </tbody>
-</table>
+﻿@model List<Task_Manager.Models.Task>
+
+@foreach (var task in Model)
+{
+    <tr>
+        <td>@task.Title</td>
+        <td>@task.Description</td>
+        <td>@(task.IsCompleted ? "Yes" : "No")</td>
+        <td>
+            <button class="btn btn-secondary" type="button" hx-get="/Task/Edit/@task.Id" hx-target="#taskForm">Edit</button>
+            <button class="btn btn-danger" type="button" hx-post="/Task/Delete/@task.Id" hx-confirm="Are you sure you want to delete this task?" hx-target="#taskCollection">Delete</button>
+        </td>
+    </tr>
+}

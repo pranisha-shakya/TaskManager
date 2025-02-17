@@ -2,10 +2,32 @@
 
 <h2>Tasks</h2>
 
-@await Html.PartialAsync("_Tasks", Model)
+<h3>
+    <span class="htmx-indicator">Searching...</span>
+</h3>
+<input class="form-control" type="search"
+       name="search" placeholder="Search Tasks..."
+       hx-post="/search"
+       hx-trigger="input changed delay:500ms, keyup[key=='Enter'], load"
+       hx-target="#search-results"
+       hx-indicator=".htmx-indicator">
+
+<table id="taskCollection" class="table table-striped table-bordered">
+    <thead>
+        <tr>
+            <th>Task</th>
+            <th>Description</th>
+            <th>IsCompleted</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody id="search-results">
+        @await Html.PartialAsync("_Tasks", Model)
+    </tbody>
+</table>
 
 <div>
     <button class="btn btn-success" hx-get="/Task/Create" hx-target="#taskForm">Create New Task</button>
 </div>
 
-<div id="taskForm" hx-boost="true"></div>
+<div id="taskForm"></div>

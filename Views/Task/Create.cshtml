@@ -3,7 +3,7 @@
     Layout = null;
 }
 <h1>Create Ticket</h1>
-<form method="post" hx-post="/Task/Create" hx-target="#taskCollection">
+<form hx-post="/Task/Create" hx-target="#taskCollection">
     <div asp-validation-summary="All" class="text-danger"></div>
     <div class="form-group">
         <label asp-for="Title"></label>
