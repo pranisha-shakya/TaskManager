@@ -74,11 +74,11 @@ namespace Task_Manager.Controllers
         [HttpPost]
         public IActionResult Search(string search)
         {
-            var filteredTasks = _context.Tasks
-                .Where(t => t.Title.Contains(search) || t.Description.Contains(search))
-                .ToList();
+            var tasks = string.IsNullOrWhiteSpace(search)
+                ? _context.Tasks.ToList()
+                : _context.Tasks.Where(t => t.Title.Contains(search) || t.Description.Contains(search)).ToList();
 
-            return PartialView("_Tasks", filteredTasks);
+            return PartialView("_Tasks", tasks);
         }
 
     }
